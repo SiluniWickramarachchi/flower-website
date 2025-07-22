@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flower Basket | Bloom Boutique</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff8fb;
+    color: #4b3a42;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgb(216 121 143 / 0.2);
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.6rem;
+    margin-bottom: 50px;
+    color: #d95f73;
+    letter-spacing: 0.1em;
+    font-family: 'Playfair Display', serif;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 25px;
+  }
+
+  thead tr {
+    border-bottom: none;
+  }
+
+  thead th {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #9f6f7b;
+    padding-bottom: 10px;
+    text-align: left;
+    letter-spacing: 0.08em;
+  }
+
+  tbody tr {
+    background: #fff0f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgb(217 95 115 / 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+  tbody tr:hover {
+    box-shadow: 0 8px 24px rgb(217 95 115 / 0.25);
+  }
+
+  tbody td {
+    padding: 20px 15px;
+    vertical-align: middle;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .product-info img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgb(217 95 115 / 0.25);
+    transition: transform 0.3s ease;
+  }
+  .product-info img:hover {
+    transform: scale(1.05);
+  }
+
+  .product-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #5b3a47;
+  }
+
+  .price,
+  .total-price {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #8a5a67;
+  }
+
+  .quantity-input {
+    width: 70px;
+    border: 1.8px solid #d97487;
+    border-radius: 12px;
+    padding: 8px 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #6f4c57;
+    text-align: center;
+    transition: border-color 0.3s ease;
+  }
+  .quantity-input:focus {
+    outline: none;
+    border-color: #d93c58;
+  }
+
+  .remove-btn {
+    background: transparent;
+    border: none;
+    color: #d95f73;
+    font-size: 1.6rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: color 0.25s ease;
+  }
+  .remove-btn:hover {
+    color: #b5354f;
+  }
+
+  .summary {
+    margin-top: 40px;
+    max-width: 350px;
+    margin-left: auto;
+    background: #fce9f0;
+    border-radius: 20px;
+    padding: 30px 35px;
+    box-shadow: 0 10px 35px rgb(217 95 115 / 0.15);
+  }
+  .summary h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #bb435a;
+    margin-bottom: 25px;
+    letter-spacing: 0.08em;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #7a4d59;
+    margin-bottom: 15px;
+  }
+  .summary-total {
+    border-top: 3px solid #bb435a;
+    padding-top: 20px;
+    font-size: 1.5rem;
+    color: #9d4d5b;
+  }
+
+  .btn-group {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 16px 0;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    border: none;
+  }
+  .btn-continue {
+    background: #d97487;
+    color: white;
+    box-shadow: 0 6px 18px rgb(217 95 115 / 0.35);
+  }
+  .btn-continue:hover {
+    background: #bb435a;
+    box-shadow: 0 8px 25px rgb(187 67 90 / 0.45);
+  }
+
+  .btn-checkout {
+    background: #bb435a;
+    color: white;
+    box-shadow: 0 6px 18px rgb(187 67 90 / 0.35);
+  }
+  .btn-checkout:hover {
+    background: #9d3448;
+    box-shadow: 0 8px 25px rgb(157 52 72 / 0.45);
+  }
+
+  /* Responsive */
+  @media (max-width: 650px) {
+    .container {
+      padding: 30px 25px;
+      margin: 20px;
+    }
+
+    table {
+      border-spacing: 0 20px;
+    }
+    tbody td {
+      padding: 18px 10px;
+    }
+    .product-info img {
+      width: 70px;
+      height: 70px;
+    }
+
+    .summary {
+      max-width: 100%;
+      margin-left: 0;
+      padding: 25px 25px;
+    }
+    .btn-group {
+      flex-direction: column;
+    }
+    .btn {
+      padding: 14px 0;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="container">
+  <h1>Your Flower Basket</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Flower</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="product-info">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=90&q=80" alt="Red Roses Bouquet" />
+            <span class="product-name">Red Roses Bouquet</span>
+          </div>
+        </td>
+        <td class="price">$45.00</td>
+        <td><input type="number" class="quantity-input" value="1" min="1" /></td>
+        <td class="total-price">$45.00</td>
+        <td><button class="remove-btn" title="Remove Flower">&times;</button></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="product-info">
+            <img src="https://images.unsplash.com/photo-1494256997604-768d1f608cac?auto=format&fit=crop&w=90&q=80" alt="Sunflower Bundle" />
+            <span class="product-name">Sunflower Bundle</span>
+          </div>
+        </td>
+        <td class="price">$30.00</td>
+        <td><input type="number" class="quantity-input" value="2" min="1" /></td>
+        <td class="total-price">$60.00</td>
+        <td><button class="remove-btn" title="Remove Flower">&times;</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <h2>Order Summary</h2>
+    <div class="summary-item">
+      <span>Subtotal</span>
+      <span id="subtotal">$105.00</span>
+    </div>
+    <div class="summary-item">
+      <span>Shipping</span>
+      <span id="shipping">$7.00</span>
+    </div>
+    <div class="summary-item summary-total">
+      <span>Total</span>
+      <span id="total">$112.00</span>
+    </div>
+
+    <div class="btn-group">
+      <a href="shop.html" class="btn btn-continue">Continue Shopping</a>
+      <a href="checkout.html" class="btn btn-checkout">Checkout</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

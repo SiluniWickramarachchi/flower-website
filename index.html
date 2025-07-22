@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bloom & Grace | Flower Boutique</title>
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f7b9c4;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #fff;
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        background-color: #f7b9c4;
+        position: absolute;
+        right: 40px;
+        top: 70px;
+        padding: 20px;
+        display: none;
+        border-radius: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      background: url('images/hero.png') no-repeat top center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: #fff0f5;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 1;
+      border-radius: 0 0 100% 0 / 70% 0 100% 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #333;
+      max-width: 700px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .hero-content a {
+      padding: 12px 28px;
+      background-color: #f7b9c4;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 30px;
+      transition: 0.3s ease;
+    }
+
+    .hero-content a:hover {
+      background-color: #f3d9e5;
+    }
+
+    /* Best Offers */
+    #onsale {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    #onsale h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #f7b9c4;
+    }
+
+    .offer-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .offer-item {
+      width: 280px;
+      background: #fff0f5;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .offer-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .offer-item img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .offer-item h3 {
+      font-family: 'Playfair Display', serif;
+      color: #d24d57;
+      font-size: 1.25rem;
+    }
+
+    /* Contact Us */
+    #contact {
+      background-color: #f3d9e5;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #b84d57;
+    }
+
+    #contact p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    #contact form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #contact input,
+    #contact textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    #contact button {
+      padding: 14px;
+      background-color: #f7b9c4;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #f3d9e5;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        background-color: #f7b9c4;
+        position: absolute;
+        right: 40px;
+        top: 70px;
+        padding: 20px;
+        display: none;
+        border-radius: 10px;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .offer-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Bloom & Grace</div>
+
+<ul class="nav-links" id="navLinks">
+  <li><a href="aboutus.html">About Us</a></li>
+  <li><a href="shop.html">Shop Now</a></li>
+  <li><a href="#onsale">On Sale</a></li>
+  <li><a href="#contact">Contact Us</a></li>
+</ul>
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Send Love with Every Bloom</h1>
+      <p>Elegant, handcrafted flower bouquets delivered fresh to your loved ones.</p>
+      <a href="#shop">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Best Offers Section -->
+  <section id="onsale">
+    <h2>🌸 Best Offers 🌸</h2>
+    <div class="offer-grid">
+      <div class="offer-item">
+        <img src="images/1.png.jpeg" alt="Rose Bouquet" />
+        <h3>Romantic Roses - 25% OFF</h3>
+      </div>
+      <div class="offer-item">
+        <img src="images/2.png.jpeg" alt="Mixed Bouquet" />
+        <h3>Color Splash Combo - 20% OFF</h3>
+      </div>
+      <div class="offer-item">
+        <img src="images/3.png.jpeg" alt="Seasonal Flowers" />
+        <h3>Seasonal Special - 30% OFF</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Fill out the form and we’ll get in touch soon.</p>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Bloom & Grace. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

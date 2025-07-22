@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | Bloom & Grace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <style>
+    /* Features Section */
+    #features {
+      max-width: 1000px;
+      margin: 60px auto 80px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    #features h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #f7b9c4;
+      margin-bottom: 40px;
+    }
+    .features-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .feature-item {
+      background: #fff0f5;
+      border-radius: 15px;
+      padding: 30px 20px;
+      flex: 1 1 250px;
+      box-shadow: 0 6px 15px rgba(199, 91, 124, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .feature-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(199, 91, 124, 0.3);
+    }
+    .feature-icon {
+      font-size: 48px;
+      color: #d24d57;
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+    .feature-item:hover .feature-icon {
+      color: #f7b9c4;
+    }
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #b84d57;
+    }
+    .feature-desc {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Smooth fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Bloom & Grace</div>
+
+    <ul class="nav-links" id="navLinks">
+       <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="index.html#shop">Shop Now</a></li>
+      <li><a href="index.html#onsale">On Sale</a></li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+    </ul>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </nav>
+
+  <!-- About Us Content -->
+  <section id="about" style="padding: 60px 20px; max-width: 900px; margin: 40px auto; color: #333;">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #f7b9c4; margin-bottom: 30px; text-align: center;">About Bloom & Grace</h1>
+    
+    <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 20px;" class="fade-in">
+      At <strong>Bloom & Grace</strong>, we believe every flower tells a story. Founded in 2025, our passion is to craft beautiful, handcrafted bouquets that celebrate life’s special moments from birthdays and weddings to everyday gestures of love and kindness.
+    </p>
+    <p style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 20px;" class="fade-in" style="transition-delay: 0.1s;">
+      Our team of expert florists sources the freshest seasonal blooms to create unique arrangements tailored to your style and sentiment. We are committed to quality, freshness, and exceptional customer service delivering smiles one bouquet at a time.
+    </p>
+    <p style="font-size: 1.15rem; line-height: 1.7;" class="fade-in" style="transition-delay: 0.2s;">
+      Whether you want to surprise a loved one or brighten up your own space, <strong>Bloom & Grace</strong> is your trusted partner in floral elegance.
+    </p>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <h2>Our Features</h2>
+    <div class="features-grid">
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-title">Fresh & Seasonal Flowers</div>
+        <div class="feature-desc">
+          We source only the freshest blooms, carefully selected each season to guarantee vibrant and long-lasting arrangements.
+        </div>
+      </div>
+      <div class="feature-item fade-in" style="transition-delay: 0.1s;">
+        <div class="feature-icon">🎨</div>
+        <div class="feature-title">Custom Floral Designs</div>
+        <div class="feature-desc">
+          Every bouquet is handcrafted by skilled florists, tailored to your personal style and the occasion’s unique vibe.
+        </div>
+      </div>
+      <div class="feature-item fade-in" style="transition-delay: 0.2s;">
+        <div class="feature-icon">🚚</div>
+        <div class="feature-title">Fast & Reliable Delivery</div>
+        <div class="feature-desc">
+          Same-day delivery available in selected areas to make sure your flowers arrive fresh and on time.
+        </div>
+      </div>
+      <div class="feature-item fade-in" style="transition-delay: 0.3s;">
+        <div class="feature-icon">💐</div>
+        <div class="feature-title">Wide Variety</div>
+        <div class="feature-desc">
+          From classic roses to exotic blooms, explore our extensive collection to find the perfect bouquet.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Bloom & Grace. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+
+    // Scroll fade-in effect for features and paragraphs
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('visible');
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+</body>
+</html>
+
